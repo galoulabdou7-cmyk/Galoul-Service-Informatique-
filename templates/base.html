@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Galoul Service Informatique{% endblock %}</title>
+  <meta name="description" content="بيع وشراء وصيانة أجهزة الكمبيوتر - Computer sales, used devices and repair.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">G</span><span>Galoul <b>Service</b><small>INFORMATIQUE</small></span></a>
+    <nav>
+      <a href="{{ url_for('home') }}" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+      <a href="{{ url_for('shop') }}" data-ar="المتجر" data-en="Shop">المتجر</a>
+      <a href="{{ url_for('services') }}" data-ar="التصليح" data-en="Repair">التصليح</a>
+      <a href="{{ url_for('sell_used') }}" data-ar="بيع جهازك" data-en="Sell your device">بيع جهازك</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang-btn" type="button" onclick="toggleLanguage()">EN / عربي</button>
+      <a class="cart-link" href="{{ url_for('cart') }}">🛒 <span data-ar="السلة" data-en="Cart">السلة</span> <b>{{ cart_count }}</b></a>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="container flashes">{% with messages = get_flashed_messages() %}{% if messages %}{% for message in messages %}<div class="flash">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}</div>
+  {% block content %}{% endblock %}
+</main>
+<footer class="footer"><div class="container footer-inner"><div><a class="brand light" href="{{ url_for('home') }}"><span class="brand-mark">G</span><span>Galoul <b>Service</b><small>INFORMATIQUE</small></span></a><p data-ar="حلول الكمبيوتر بين يديك." data-en="Computer solutions, made simple.">حلول الكمبيوتر بين يديك.</p></div><div><strong data-ar="خدماتنا" data-en="Our services">خدماتنا</strong><p><a href="{{ url_for('shop') }}" data-ar="بيع الكمبيوتر وملحقاته" data-en="Computers & accessories">بيع الكمبيوتر وملحقاته</a></p><p><a href="{{ url_for('services') }}" data-ar="الصيانة والإصلاح" data-en="Maintenance & repair">الصيانة والإصلاح</a></p></div><div><strong data-ar="تواصل معنا" data-en="Contact us">تواصل معنا</strong><p data-ar="الجزائر" data-en="Algeria">الجزائر</p><p><a href="/admin/login">Admin</a></p></div></div><div class="copyright">© 2026 Galoul Service Informatique</div>
+ <div class="social-media"> <a href="https://www.facebook.com/galoul.abdou" target="_blank" rel="noopener noreferrer"> <i class="fa-brands fa-facebook-f"></i> <span>Facebook</span> </a> <a href="https://www.instagram.com/galoul_abdelouahab_50/" target="_blank" rel="noopener noreferrer"> <i class="fa-brands fa-instagram"></i> <span>Instagram</span> </a> <a href="https://wa.me/21391943908" target="_blank" rel="noopener noreferrer"> <i class="fa-brands fa-whatsapp"></i> <span>WhatsApp</span> </a> </div> </footer>     
+<a class="whatsapp" target="_blank" rel="noopener" href="https://wa.me/213791943908" aria-label="WhatsApp">☏ <span>WhatsApp</span></a>
+<script src="{{ url_for('static', filename='site.js') }}"></script>
+</body></html>
+
+
